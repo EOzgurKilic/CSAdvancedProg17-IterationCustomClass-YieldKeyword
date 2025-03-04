@@ -42,6 +42,46 @@ namespace CSAdvancedProg17_IterationCustomClass_YieldKeyword
 
 
             #region Yield Keyword
+            //Before starting to cover yield keyword's role, I would like to revise a feature of foreach statement.
+            //foreach statement can take a method as the second argument which returns sth IEnumerable.
+            foreach (var VARIABLE in ProperLocalMethod1()) //As you can see, it takes the IEnumerable type the local method..
+            //.. returns and iterate it.
+                Console.WriteLine(VARIABLE);
+            IEnumerable<string> ProperLocalMethod1()
+            {
+                List<string> list1 = new List<string>(){"First Element","Second Element","Third Element"};
+                return list1;
+            }
+            //Yield keyword steps in exactly at this point
+            foreach (var VARIABLE in ProperLocalMethod2())
+                Console.WriteLine(VARIABLE);
+            IEnumerable<string> ProperLocalMethod2()
+            {
+                //Instead of declaring a list here which will have an allocated space for its elements in the heap..
+                //.. , we can utilize from yield keyword with the return keyword to indicate what it will return for..
+                //.. the foreach statement's each step
+                yield return "First Element"; //Compiler will know where it left at each step.
+                //It is also possible to perform some operations between yield steps;
+                Console.WriteLine("Intermediate operation.");
+                yield return "Second Element";
+                yield return "Third Element";
+                //Since there is no allocated space in the RAM for anything, this is counted more efficient compared to the first local method.
+                
+                //In the iteration process, the data not provided via yield keyword is fast-executed (you can't perform intermediate operations between each..
+                //.. step for an instance.) whereas yield keyword is associated with lazy execution. That's why the keyword is the preferred in asynchronous..
+                //.. programming too.
+                //Yield keyword is also used with the break keyword as well to stop iteration at a specific point you determine.
+                //You need to simply type yield break;
+                //Here is a great usage of yield keyword where the list elements returned is pretty crowded.
+                IEnumerable<string> ProperLocalMethod3()
+                {
+                    String[] array1 = { "First Element", "Second Element", "Third Element", "Fourth Element", "Fifth Element", "Sixth Element" };
+                    foreach (var VARIABLE in array1)
+                    {
+                        yield return VARIABLE;
+                    }
+                }
+            }
             #endregion
         }
     }
