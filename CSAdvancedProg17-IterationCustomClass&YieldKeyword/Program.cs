@@ -16,8 +16,8 @@ namespace CSAdvancedProg17_IterationCustomClass_YieldKeyword
             //.. occupies in the condition part of these loops.
             /*List<int> expList1 = new List<int>() {1,2,3,4,5 };
             for (int i = 0; i < expList1.Count; i++) { expList1.Remove(3); }*/ //will not cause an error here
-            //whereas in foreach, we will encounter an error.
-            //foreach (int i in expList1) {expList1.Add(4);}
+                                                                               //whereas in foreach, we will encounter an error.
+                                                                               //foreach (int i in expList1) {expList1.Add(4);}
 
             // IEnumerable - IEnumerator
             //IEnumerable: is the interface bringing the GetEnumerator method which features iteration.
@@ -38,6 +38,10 @@ namespace CSAdvancedProg17_IterationCustomClass_YieldKeyword
             /*Stock2 strings = new Stock2();
             foreach (string s in strings) 
             Console.WriteLine(s);*/
+            #endregion
+
+
+            #region Yield Keyword
             #endregion
         }
     }
@@ -98,5 +102,9 @@ namespace CSAdvancedProg17_IterationCustomClass_YieldKeyword
             _currentIndex = -1;
         }
     }
+    #endregion
+
+
+    #region Yield Keyword
     #endregion
 }
